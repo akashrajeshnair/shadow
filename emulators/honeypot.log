@@ -1,0 +1,13 @@
+2025-03-01 12:29:10,743 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.25.16.23:5000
+2025-03-01 12:29:10,744 - [33mPress CTRL+C to quit[0m
+2025-03-01 12:30:33,823 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.25.16.23:5000
+2025-03-01 12:30:33,823 - [33mPress CTRL+C to quit[0m
+2025-03-01 12:31:54,553 - Executed command: whoami from IP: 127.0.0.1, MAC: ff:ff:ff:ff:ff:ff
+2025-03-01 12:31:54,903 - Blacklisted command detected: whoami from IP: 127.0.0.1, MAC: ff:ff:ff:ff:ff:ff
+2025-03-01 12:31:54,904 - 127.0.0.1 - - [01/Mar/2025 12:31:54] "POST /execute HTTP/1.1" 200 -
