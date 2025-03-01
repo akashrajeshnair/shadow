@@ -1,0 +1,4 @@
+HONEYPOT_PORT = 2222
+API_PORT = 5001
+
+MONGO_URI = "mongodb://mongodb:27017/"

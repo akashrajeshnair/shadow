@@ -26,7 +26,7 @@ def fake_mqtt_connect():
     # Log the attack
     log_attack(attacker_ip, "MQTT_CONNECT", "connect", {"status": "Connected"}, {"status": "success", "message": "Connected to fake MQTT broker"})
 
-    return jsonify({"status": "success", "message": "Connected to fake MQTT broker"})
+    return jsonify({"status": "success", "message": "Connected to MQTT broker"})
 
 
 @app.route("/api/mqtt/message", methods=["POST"])
@@ -42,7 +42,7 @@ def fake_mqtt_message():
     # Log the attack
     log_attack(attacker_ip, "MQTT_MESSAGE", "message", {"topic": topic, "payload": payload}, {"status": "success", "message": "Fake MQTT message received"})
 
-    return jsonify({"status": "success", "message": "Fake MQTT message received"})
+    return jsonify({"status": "success", "message": "MQTT message received"})
 
 @app.route("/api/mqtt/device/<device_name>", methods=["POST"])
 def fake_mqtt_device(device_name):
