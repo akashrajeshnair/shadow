@@ -13,14 +13,15 @@
         <nav>
             <ul>
                 <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('ssh_page') }}">Login to your devices via SSH</a></li>
-                <li><a href="{{ url_for('mqtt_page') }}">Control your smart devices via MQTT</a></li>
-                <li><a href="{{ url_for('router_page') }}">Router Configuration Panel</a></li>
+                <li><a href="{{ url_for('ssh.ssh_page') }}">Login to your devices via SSH</a></li>
+                <li><a href="{{ url_for('ssh.ssh_page') }}">Control your smart devices via MQTT</a></li>
+                <li><a href="{{ url_for('ssh.ssh_page') }}">Router Configuration Panel</a></li>
             </ul>
         </nav>
     </header>
     <main>
         {% block content %}{% endblock %}
+        <script src="{{ url_for('static', filename='/js/terminal.js') }}"></script>
     </main>
     <footer>
         <p>&copy; Home automation Software</p>

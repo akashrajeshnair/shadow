@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}SSH Terminal{% endblock %}
+
+{% block content %}
+    <h2>SSH Terminal</h2>
+    <div id="terminal">
+        <div id="output">
+            <p>Welcome to Home Server</p>
+        </div>
+        <div id="input-line">
+            <span class="prompt">root@homeserver:~$</span>
+            <input type="text" id="commandInput" autofocus>
+        </div>
+    </div>
+{% endblock %}

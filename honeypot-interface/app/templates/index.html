@@ -1,0 +1,14 @@
+<!-- index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home - Automation System{% endblock %}
+
+{% block content %}
+    <h2>Welcome to the Home Automation System</h2>
+    <p>Select a module to interact with:</p>
+    <ul>
+        <li><a href="{{ url_for('ssh.ssh_page') }}">SSH into your devices</a></li>
+        <li><a href="{{ url_for('ssh.ssh_page') }}">Access smart devices via MQTT</a></li>
+        <li><a href="{{ url_for('ssh.ssh_page') }}">Router Config Panel</a></li>
+    </ul>
+{% endblock %}

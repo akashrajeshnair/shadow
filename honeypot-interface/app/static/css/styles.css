@@ -1,0 +1,32 @@
+#terminal {
+    background-color: black;
+    color: green;
+    font-family: monospace;
+    padding: 10px;
+    border-radius: 5px;
+    height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+
+#output p {
+    margin: 2px 0;
+}
+
+.prompt {
+    color: lightgreen;
+}
+
+#input-line {
+    display: flex;
+    align-items: center;
+}
+
+#commandInput {
+    background: none;
+    border: none;
+    color: green;
+    font-family: monospace;
+    outline: none;
+    width: 100%;
+}
