@@ -1,3 +1,4 @@
 shadow_env/
 .python-version
 .env
+__pycache__/

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 from routes.auth import auth_bp
 from routes.admin import admin_bp
 from routes.api import api_bp
@@ -10,8 +10,8 @@ import os
 # Initialize Flask app
 app = Flask(__name__)
 
-# Load configuration from config.py if needed
-app.config.from_pyfile('config.py')
+# # Load configuration from config.py if needed
+# app.config.from_pyfile('config.py')
 
 # Ensure logs directory exists
 os.makedirs("logs", exist_ok=True)
@@ -27,4 +27,4 @@ app.register_blueprint(upload_bp, url_prefix="/upload")
 @app.route("/")
 def index():
     """Homepage redirects to fake login page."""
-    return auth_bp.view_functions['login']()
+    return redirect(url_for("auth.fake_login"))
