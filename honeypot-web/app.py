@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for
 from routes.routes import auth_bp, admin_bp, api_bp, search_bp, upload_bp
 from db.db import db
+from middleware.middleware import detect_unix_attack
 import os
 import logging
 
@@ -18,6 +19,11 @@ logging.basicConfig(
 )
 
 logging.info("Starting Honeypot Web Server...")
+
+# Apply middleware before every request
+@app.before_request
+def before_request():
+    return detect_unix_attack()
 
 # Register Blueprints (modular routes)
 app.register_blueprint(auth_bp, url_prefix="/auth")
