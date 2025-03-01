@@ -22,3 +22,5 @@
 2025-03-02 00:45:32,253 - INFO - 127.0.0.1 - - [02/Mar/2025 00:45:32] "GET /firewall/rules HTTP/1.1" 200 -
 2025-03-02 00:46:02,750 - INFO - Firewall Access - 127.0.0.1 - POST /firewall/rules - {'rule': 'Block all traffic on port 8080'}
 2025-03-02 00:46:02,751 - INFO - 127.0.0.1 - - [02/Mar/2025 00:46:02] "[35m[1mPOST /firewall/rules HTTP/1.1[0m" 201 -
+2025-03-02 00:47:41,165 - INFO -  * Detected change in 'D:\\SANDBOX\\trial\\fake-router\\config.py', reloading
+2025-03-02 00:47:41,586 - INFO -  * Restarting with stat
