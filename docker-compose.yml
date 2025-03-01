@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  mqtt-emulator:
+    build: ./emulators/mqtt
+    container_name: mqtt-honeypot
+    ports:
+      - "5002:5003"
+    depends_on:
+      - mongodb
+    environment:
+      - FLASK_ENV=production
+      - MONGO_URI=mongodb://mongodb:27017/honeypot
+    restart: always
+
+  mongodb:
+    image: mongo:6.0
+    container_name: honeypot-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: always
+
+volumes:
+  mongo_data:
