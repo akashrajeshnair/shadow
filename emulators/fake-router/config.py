@@ -1,2 +1,9 @@
-MONGO_URI = "mongodb+srv://vvsl180504:shadow123@shadow.r9ixy.mongodb.net/?retryWrites=true&w=majority&appName=Shadow"
-DATABASE_NAME = "fake_router"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
+
+MONGO_URI = os.getenv("MONGO_URI")
+DATABASE_NAME = os.getenv("DATABASE_NAME", "fake_router")
+LOG_FILE = "honeypot.log"
+FLASK_DEBUG = True

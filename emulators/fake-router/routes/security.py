@@ -1,33 +1,22 @@
 from flask import Blueprint, request, jsonify
-from logger import log_request
+from database import logs_collection
+from logger import log_event
+import datetime
 
 security_bp = Blueprint("security", __name__)
 
-@security_bp.route("/api/security/configure", methods=["POST"])
-def configure_security():
+@security_bp.route("/api/security/firewall", methods=["POST"])
+def update_firewall():
     data = request.json
-    fake_response = {"message": "Security settings updated successfully"}
+    log_event(f"Firewall settings changed: {data}")
+    
+    logs_collection.insert_one({
+        "timestamp": datetime.datetime.utcnow(),
+        "device": "Router",
+        "ip": request.remote_addr,
+        "command": "POST /api/security/firewall",
+        "data": data,
+        "response": "Firewall updated"
+    })
 
-    log_request(
-        command="security_configure",
-        data=data,
-        response=fake_response,
-        ip=request.remote_addr,
-        device=request.headers.get("User-Agent", "Unknown Device")
-    )
-
-    return jsonify(fake_response)
-
-@security_bp.route("/api/security/status", methods=["GET"])
-def security_status():
-    fake_response = {"firewall": "Enabled", "encryption": "WPA3"}
-
-    log_request(
-        command="security_status",
-        data=None,
-        response=fake_response,
-        ip=request.remote_addr,
-        device=request.headers.get("User-Agent", "Unknown Device")
-    )
-
-    return jsonify(fake_response)
+    return jsonify({"message": "Firewall settings updated"}), 200

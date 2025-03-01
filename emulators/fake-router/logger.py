@@ -1,13 +1,11 @@
-from datetime import datetime
-from database import logs_collection
+import logging
+from config import LOG_FILE
 
-def log_request(command, data, response, ip, device):
-    log_entry = {
-        "timestamp": datetime.utcnow(),
-        "device": device,
-        "ip": ip,
-        "command": command,
-        "data": data,
-        "response": response
-    }
-    logs_collection.insert_one(log_entry)
+logging.basicConfig(
+    filename=LOG_FILE,
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
+def log_event(event):
+    logging.info(event)

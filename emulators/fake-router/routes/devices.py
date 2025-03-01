@@ -1,14 +1,27 @@
-from flask import Blueprint, jsonify
-from database import devices_collection
+from flask import Blueprint, request, jsonify
+from database import logs_collection
+from logger import log_event
+import datetime
 
 devices_bp = Blueprint("devices", __name__)
 
+fake_devices = [
+    {"device_id": "D001", "name": "Smart Bulb", "status": "online"},
+    {"device_id": "D002", "name": "Smart Camera", "status": "offline"},
+    {"device_id": "D003", "name": "Thermostat", "status": "online"},
+]
+
 @devices_bp.route("/api/devices", methods=["GET"])
 def list_devices():
-    fake_devices = [
-        {"id": 1, "name": "Smart Light", "status": "Online"},
-        {"id": 2, "name": "Smart Thermostat", "status": "Offline"},
-        {"id": 3, "name": "Security Camera", "status": "Online"}
-    ]
-    devices_collection.insert_many(fake_devices)
+    log_event("Listed fake IoT devices")
+    
+    logs_collection.insert_one({
+        "timestamp": datetime.datetime.utcnow(),
+        "device": "Router",
+        "ip": request.remote_addr,
+        "command": "GET /api/devices",
+        "data": None,
+        "response": fake_devices
+    })
+    
     return jsonify(fake_devices)
