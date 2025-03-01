@@ -1,5 +1,5 @@
 from flask import render_template, request
-from routes import auth_bp
+from routes.routes import auth_bp
 from utils.logger import log_login_attempt
 
 @auth_bp.route("/login", methods=["GET", "POST"])

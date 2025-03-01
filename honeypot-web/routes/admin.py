@@ -1,5 +1,5 @@
 from flask import render_template, request
-from routes import admin_bp
+from routes.routes import admin_bp
 from utils.logger import log_attack
 
 @admin_bp.route("/admin", methods=["GET"])

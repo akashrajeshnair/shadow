@@ -1,4 +1,4 @@
-from db import db
+from db.db import db
 
 attack_log_schema = {
     "ip": str,             # Attacker's IP address

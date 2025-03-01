@@ -1,5 +1,5 @@
 from flask import render_template, request
-from routes import search_bp
+from routes.routes import search_bp
 from utils.logger import log_attack
 
 @search_bp.route("/search", methods=["GET"])

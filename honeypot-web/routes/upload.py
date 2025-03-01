@@ -1,5 +1,5 @@
 from flask import render_template, request
-from routes import upload_bp
+from routes.routes import upload_bp
 from utils.logger import log_attack
 
 @upload_bp.route("/upload", methods=["GET", "POST"])

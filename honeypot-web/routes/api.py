@@ -1,5 +1,5 @@
 from flask import jsonify, request
-from routes import api_bp
+from routes.routes import api_bp
 from utils.logger import log_attack
 
 @api_bp.route("/api/data", methods=["GET"])
