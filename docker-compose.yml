@@ -26,6 +26,18 @@ services:
       - MONGO_URI=mongodb://mongodb:27017/honeypot
     restart: always
 
+  fake-router:
+    build: ./emulators/fake-router
+    container_name: fake-router
+    ports:
+      - "5003:5003"
+    depends_on:
+      - mongodb
+    environment:
+      - FLASK_ENV=production
+      - MONGO_URI=mongodb://mongodb:27017/honeypot
+    restart: always
+
   mongodb:
     image: mongo:6.0
     container_name: honeypot-mongo

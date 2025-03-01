@@ -8,7 +8,7 @@ network_bp = Blueprint("network", __name__)
 @network_bp.route("/api/network/config", methods=["GET"])
 def get_network_config():
     fake_config = {
-        "hostname": "FakeRouter",
+        "hostname": "Router@SmartHome",
         "ip": "192.168.1.1",
         "subnet_mask": "255.255.255.0",
         "gateway": "192.168.1.254",

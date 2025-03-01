@@ -14,4 +14,4 @@ app.register_blueprint(devices_bp)
 app.register_blueprint(firewall_bp)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=FLASK_DEBUG)
+    app.run(host="0.0.0.0", port=5003, debug=FLASK_DEBUG)
