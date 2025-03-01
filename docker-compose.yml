@@ -27,8 +27,8 @@ services:
     restart: always
 
   fake-router:
-    build: ./emulators/fake-router
-    container_name: fake-router
+    build: ./emulators/router
+    container_name: router-honeypot
     ports:
       - "5003:5003"
     depends_on:
