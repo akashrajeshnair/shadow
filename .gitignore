@@ -1,2 +1,3 @@
 shadow_env/
 .python-version
+.env
