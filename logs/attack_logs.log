@@ -1,0 +1,163 @@
+2025-03-01 15:12:14,372 - Starting Honeypot Web Server...
+2025-03-01 15:12:14,536 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.117:5000
+2025-03-01 15:12:14,536 - [33mPress CTRL+C to quit[0m
+2025-03-01 15:12:14,537 -  * Restarting with stat
+2025-03-01 15:12:15,780 - Starting Honeypot Web Server...
+2025-03-01 15:12:15,792 -  * Debugger is active!
+2025-03-01 15:12:15,927 -  * Debugger PIN: 663-134-355
+2025-03-01 15:13:43,902 - 127.0.0.1 - - [01/Mar/2025 15:13:43] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-03-01 15:13:43,959 - 127.0.0.1 - - [01/Mar/2025 15:13:43] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-03-01 15:13:44,003 - 127.0.0.1 - - [01/Mar/2025 15:13:44] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-03-01 15:13:44,042 - 127.0.0.1 - - [01/Mar/2025 15:13:44] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-03-01 15:13:44,053 - 127.0.0.1 - - [01/Mar/2025 15:13:44] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=RSi763ARpO4MQLOgdFsl HTTP/1.1" 200 -
+2025-03-01 15:13:54,384 - 127.0.0.1 - - [01/Mar/2025 15:13:54] "[33mGET /login HTTP/1.1[0m" 404 -
+2025-03-01 15:13:54,461 - 127.0.0.1 - - [01/Mar/2025 15:13:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-01 15:13:59,448 - 127.0.0.1 - - [01/Mar/2025 15:13:59] "[33mGET /admin HTTP/1.1[0m" 404 -
+2025-03-01 15:15:09,295 - 127.0.0.1 - - [01/Mar/2025 15:15:09] "[33mGET /search HTTP/1.1[0m" 404 -
+2025-03-01 15:20:50,433 -  * Detected change in '/home/akashnair/Projects/shadow/honeypot-web/app.py', reloading
+2025-03-01 15:20:53,657 -  * Restarting with stat
+2025-03-01 15:21:40,836 - Starting Honeypot Web Server...
+2025-03-01 15:21:40,852 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.117:5000
+2025-03-01 15:21:40,852 - [33mPress CTRL+C to quit[0m
+2025-03-01 15:21:40,853 -  * Restarting with stat
+2025-03-01 15:21:46,788 - Starting Honeypot Web Server...
+2025-03-01 15:21:46,803 -  * Debugger is active!
+2025-03-01 15:21:46,810 -  * Debugger PIN: 663-134-355
+2025-03-01 15:22:03,593 - 127.0.0.1 - - [01/Mar/2025 15:22:03] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-03-01 15:22:03,651 - 127.0.0.1 - - [01/Mar/2025 15:22:03] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-03-01 15:22:03,654 - 127.0.0.1 - - [01/Mar/2025 15:22:03] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-03-01 15:22:03,688 - 127.0.0.1 - - [01/Mar/2025 15:22:03] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=KbCQ6jJQKrUrcAcUJcWM HTTP/1.1" 200 -
+2025-03-01 15:24:17,815 -  * Detected change in '/home/akashnair/Projects/shadow/honeypot-web/app.py', reloading
+2025-03-01 15:24:18,382 -  * Restarting with stat
+2025-03-01 15:24:29,830 - Starting Honeypot Web Server...
+2025-03-01 15:24:29,847 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.117:5000
+2025-03-01 15:24:29,847 - [33mPress CTRL+C to quit[0m
+2025-03-01 15:24:29,848 -  * Restarting with stat
+2025-03-01 15:24:45,386 - Starting Honeypot Web Server...
+2025-03-01 15:24:45,403 -  * Debugger is active!
+2025-03-01 15:24:45,410 -  * Debugger PIN: 663-134-355
+2025-03-01 15:24:45,420 - 127.0.0.1 - - [01/Mar/2025 15:24:45] "[32mGET / HTTP/1.1[0m" 302 -
+2025-03-01 15:24:45,422 - 127.0.0.1 - - [01/Mar/2025 15:24:45] "[32mGET / HTTP/1.1[0m" 302 -
+2025-03-01 15:24:45,436 - 127.0.0.1 - - [01/Mar/2025 15:24:45] "GET /auth/login HTTP/1.1" 200 -
+2025-03-01 15:24:48,422 - 127.0.0.1 - - [01/Mar/2025 15:24:48] "[33mGET /admin HTTP/1.1[0m" 404 -
+2025-03-01 15:24:51,476 - 127.0.0.1 - - [01/Mar/2025 15:24:51] "[33mGET /search HTTP/1.1[0m" 404 -
+2025-03-01 15:24:54,972 - 127.0.0.1 - - [01/Mar/2025 15:24:54] "[33mGET /upload HTTP/1.1[0m" 404 -
+2025-03-01 15:25:03,002 - 127.0.0.1 - - [01/Mar/2025 15:25:03] "[33mGET /api/data HTTP/1.1[0m" 404 -
+2025-03-01 15:31:20,480 - 127.0.0.1 - - [01/Mar/2025 15:31:20] "[33mGET /admin HTTP/1.1[0m" 404 -
+2025-03-01 15:35:16,559 - 127.0.0.1 - - [01/Mar/2025 15:35:16] "[32mGET / HTTP/1.1[0m" 302 -
+2025-03-01 15:35:16,568 - 127.0.0.1 - - [01/Mar/2025 15:35:16] "GET /auth/login HTTP/1.1" 200 -
+2025-03-01 15:35:21,033 - 127.0.0.1 - - [01/Mar/2025 15:35:21] "[33mGET /admin HTTP/1.1[0m" 404 -
+2025-03-01 15:41:00,043 -  * Detected change in '/home/akashnair/Projects/shadow/honeypot-web/routes/routes.py', reloading
+2025-03-01 15:41:00,603 -  * Restarting with stat
+2025-03-01 15:41:06,979 - Starting Honeypot Web Server...
+2025-03-01 15:41:06,992 -  * Debugger is active!
+2025-03-01 15:41:06,997 -  * Debugger PIN: 663-134-355
+2025-03-01 15:41:17,734 - Starting Honeypot Web Server...
+2025-03-01 15:41:51,975 - Starting Honeypot Web Server...
+2025-03-01 15:41:51,992 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.117:5000
+2025-03-01 15:41:51,992 - [33mPress CTRL+C to quit[0m
+2025-03-01 15:41:51,993 -  * Restarting with stat
+2025-03-01 15:41:54,780 - Starting Honeypot Web Server...
+2025-03-01 15:41:54,797 -  * Debugger is active!
+2025-03-01 15:41:54,808 -  * Debugger PIN: 663-134-355
+2025-03-01 15:42:12,434 - 127.0.0.1 - - [01/Mar/2025 15:42:12] "GET /auth/login HTTP/1.1" 200 -
+2025-03-01 15:42:15,420 - 127.0.0.1 - - [01/Mar/2025 15:42:15] "[33mGET /admin HTTP/1.1[0m" 404 -
+2025-03-01 15:42:17,929 - 127.0.0.1 - - [01/Mar/2025 15:42:17] "[33mGET /search HTTP/1.1[0m" 404 -
+2025-03-01 15:45:41,269 -  * Detected change in '/home/akashnair/Projects/shadow/honeypot-web/app.py', reloading
+2025-03-01 15:45:41,660 -  * Restarting with stat
+2025-03-01 15:46:38,095 - Starting Honeypot Web Server...
+2025-03-01 15:46:38,115 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.117:5000
+2025-03-01 15:46:38,115 - [33mPress CTRL+C to quit[0m
+2025-03-01 15:46:38,116 -  * Restarting with stat
+2025-03-01 15:46:40,453 - Starting Honeypot Web Server...
+2025-03-01 15:46:40,466 -  * Debugger is active!
+2025-03-01 15:46:40,474 -  * Debugger PIN: 663-134-355
+2025-03-01 15:47:00,891 - 127.0.0.1 - - [01/Mar/2025 15:47:00] "[33mGET /search HTTP/1.1[0m" 404 -
+2025-03-01 15:47:02,113 - 127.0.0.1 - - [01/Mar/2025 15:47:02] "[33mGET /search HTTP/1.1[0m" 404 -
+2025-03-01 15:47:04,742 - 127.0.0.1 - - [01/Mar/2025 15:47:04] "[32mGET / HTTP/1.1[0m" 302 -
+2025-03-01 15:47:04,802 - 127.0.0.1 - - [01/Mar/2025 15:47:04] "GET /auth/login HTTP/1.1" 200 -
+2025-03-01 15:47:06,328 - 127.0.0.1 - - [01/Mar/2025 15:47:06] "[33mGET /admin HTTP/1.1[0m" 404 -
+2025-03-01 15:47:13,800 - 127.0.0.1 - - [01/Mar/2025 15:47:13] "[33mGET /upload HTTP/1.1[0m" 404 -
+2025-03-01 15:47:32,826 -  * Detected change in '/home/akashnair/Projects/shadow/honeypot-web/routes/search.py', reloading
+2025-03-01 15:47:33,303 -  * Restarting with stat
+2025-03-01 15:47:42,637 - Starting Honeypot Web Server...
+2025-03-01 15:47:42,655 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.117:5000
+2025-03-01 15:47:42,655 - [33mPress CTRL+C to quit[0m
+2025-03-01 15:47:42,656 -  * Restarting with stat
+2025-03-01 15:47:45,218 - Starting Honeypot Web Server...
+2025-03-01 15:47:45,232 -  * Debugger is active!
+2025-03-01 15:47:45,240 -  * Debugger PIN: 663-134-355
+2025-03-01 15:47:46,403 - 127.0.0.1 - - [01/Mar/2025 15:47:46] "GET /auth/login HTTP/1.1" 200 -
+2025-03-01 15:47:47,551 - 127.0.0.1 - - [01/Mar/2025 15:47:47] "GET /auth/login HTTP/1.1" 200 -
+2025-03-01 15:47:48,704 - 127.0.0.1 - - [01/Mar/2025 15:47:48] "[33mGET /search HTTP/1.1[0m" 404 -
+2025-03-01 15:50:24,395 - 127.0.0.1 - - [01/Mar/2025 15:50:24] "[35m[1mGET /search/search HTTP/1.1[0m" 500 -
+2025-03-01 15:50:24,457 - 127.0.0.1 - - [01/Mar/2025 15:50:24] "GET /search/search?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-03-01 15:50:24,458 - 127.0.0.1 - - [01/Mar/2025 15:50:24] "GET /search/search?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-03-01 15:50:24,492 - 127.0.0.1 - - [01/Mar/2025 15:50:24] "GET /search/search?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-03-01 15:50:24,495 - 127.0.0.1 - - [01/Mar/2025 15:50:24] "GET /search/search?__debugger__=yes&cmd=resource&f=console.png&s=ocYRVwTvlfd5SrtYjRll HTTP/1.1" 200 -
+2025-03-01 15:50:36,375 -  * Detected change in '/home/akashnair/Projects/shadow/honeypot-web/routes/search.py', reloading
+2025-03-01 15:50:36,864 -  * Restarting with stat
+2025-03-01 15:50:41,773 - Starting Honeypot Web Server...
+2025-03-01 15:50:41,787 -  * Debugger is active!
+2025-03-01 15:50:41,796 -  * Debugger PIN: 663-134-355
+2025-03-01 15:50:49,369 - 127.0.0.1 - - [01/Mar/2025 15:50:49] "GET /upload/upload HTTP/1.1" 200 -
+2025-03-01 15:52:21,449 -  * Detected change in '/home/akashnair/Projects/shadow/honeypot-web/routes/admin.py', reloading
+2025-03-01 15:52:21,938 -  * Restarting with stat
+2025-03-01 15:52:31,313 - Starting Honeypot Web Server...
+2025-03-01 15:52:31,327 -  * Debugger is active!
+2025-03-01 15:52:31,335 -  * Debugger PIN: 663-134-355
+2025-03-01 15:52:46,446 -  * Detected change in '/home/akashnair/Projects/shadow/honeypot-web/routes/upload.py', reloading
+2025-03-01 15:52:46,969 -  * Restarting with stat
+2025-03-01 15:52:52,974 - Starting Honeypot Web Server...
+2025-03-01 15:52:52,996 -  * Debugger is active!
+2025-03-01 15:52:53,005 -  * Debugger PIN: 663-134-355
+2025-03-01 15:53:00,999 - 127.0.0.1 - - [01/Mar/2025 15:53:00] "[33mGET /upload/upload HTTP/1.1[0m" 404 -
+2025-03-01 15:53:03,370 - 127.0.0.1 - - [01/Mar/2025 15:53:03] "[32mGET /upload HTTP/1.1[0m" 308 -
+2025-03-01 15:53:03,383 - 127.0.0.1 - - [01/Mar/2025 15:53:03] "GET /upload/ HTTP/1.1" 200 -
+2025-03-01 15:53:04,807 - 127.0.0.1 - - [01/Mar/2025 15:53:04] "[32mGET /admin HTTP/1.1[0m" 308 -
+2025-03-01 15:53:04,884 - 127.0.0.1 - - [01/Mar/2025 15:53:04] "[35m[1mGET /admin/ HTTP/1.1[0m" 500 -
+2025-03-01 15:53:04,948 - 127.0.0.1 - - [01/Mar/2025 15:53:04] "GET /admin/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-03-01 15:53:04,950 - 127.0.0.1 - - [01/Mar/2025 15:53:04] "GET /admin/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-03-01 15:53:04,981 - 127.0.0.1 - - [01/Mar/2025 15:53:04] "GET /admin/?__debugger__=yes&cmd=resource&f=console.png&s=8kEM4Y40OFgxuPEa5Cdw HTTP/1.1" 200 -
+2025-03-01 15:53:04,984 - 127.0.0.1 - - [01/Mar/2025 15:53:04] "GET /admin/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-03-01 15:53:54,432 -  * Detected change in '/home/akashnair/Projects/shadow/honeypot-web/routes/admin.py', reloading
+2025-03-01 15:53:54,985 -  * Restarting with stat
+2025-03-01 15:53:59,953 - Starting Honeypot Web Server...
+2025-03-01 15:53:59,968 -  * Debugger is active!
+2025-03-01 15:53:59,975 -  * Debugger PIN: 663-134-355
+2025-03-01 15:54:00,041 - 127.0.0.1 - - [01/Mar/2025 15:54:00] "[35m[1mGET /admin/ HTTP/1.1[0m" 500 -
+2025-03-01 15:54:00,097 - 127.0.0.1 - - [01/Mar/2025 15:54:00] "[36mGET /admin/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-03-01 15:54:00,099 - 127.0.0.1 - - [01/Mar/2025 15:54:00] "[36mGET /admin/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-03-01 15:54:00,127 - 127.0.0.1 - - [01/Mar/2025 15:54:00] "GET /admin/?__debugger__=yes&cmd=resource&f=console.png&s=DxZUjF0Glu9hkT6HPfWA HTTP/1.1" 200 -
+2025-03-01 15:54:17,748 - 127.0.0.1 - - [01/Mar/2025 15:54:17] "[35m[1mGET /api/data HTTP/1.1[0m" 500 -
+2025-03-01 15:54:17,806 - 127.0.0.1 - - [01/Mar/2025 15:54:17] "GET /api/data?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-03-01 15:54:17,809 - 127.0.0.1 - - [01/Mar/2025 15:54:17] "GET /api/data?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-03-01 15:54:17,836 - 127.0.0.1 - - [01/Mar/2025 15:54:17] "GET /api/data?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-03-01 15:54:17,846 - 127.0.0.1 - - [01/Mar/2025 15:54:17] "GET /api/data?__debugger__=yes&cmd=resource&f=console.png&s=DxZUjF0Glu9hkT6HPfWA HTTP/1.1" 200 -
+2025-03-01 15:54:21,400 - 127.0.0.1 - - [01/Mar/2025 15:54:21] "GET /upload/ HTTP/1.1" 200 -
+2025-03-01 15:54:25,742 - 127.0.0.1 - - [01/Mar/2025 15:54:25] "[32mGET /search HTTP/1.1[0m" 308 -
+2025-03-01 15:54:25,754 - 127.0.0.1 - - [01/Mar/2025 15:54:25] "GET /search/ HTTP/1.1" 200 -
+2025-03-01 15:54:31,101 - 127.0.0.1 - - [01/Mar/2025 15:54:31] "[35m[1mGET /admin/ HTTP/1.1[0m" 500 -
+2025-03-01 15:54:31,160 - 127.0.0.1 - - [01/Mar/2025 15:54:31] "[36mGET /admin/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-03-01 15:54:31,161 - 127.0.0.1 - - [01/Mar/2025 15:54:31] "[36mGET /admin/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-03-01 15:54:31,194 - 127.0.0.1 - - [01/Mar/2025 15:54:31] "GET /admin/?__debugger__=yes&cmd=resource&f=console.png&s=DxZUjF0Glu9hkT6HPfWA HTTP/1.1" 200 -
+2025-03-01 15:57:40,478 -  * Detected change in '/home/akashnair/Projects/shadow/honeypot-web/routes/upload.py', reloading
+2025-03-01 15:57:40,956 -  * Restarting with stat

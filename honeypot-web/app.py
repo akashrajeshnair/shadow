@@ -1,9 +1,9 @@
 from flask import Flask, redirect, url_for
-from routes.auth import auth_bp
-from routes.admin import admin_bp
-from routes.api import api_bp
-from routes.search import search_bp
-from routes.upload import upload_bp
+from routes.routes import auth_bp
+from routes.routes import admin_bp
+from routes.routes import api_bp
+from routes.routes import search_bp
+from routes.routes import upload_bp
 from db.db import db
 import os
 
