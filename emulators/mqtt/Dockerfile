@@ -21,7 +21,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose the Flask app port
-EXPOSE 5001
+EXPOSE 5002
 
 # Command to run the MQTT emulator
 CMD ["python", "app/main.py"]

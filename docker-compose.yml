@@ -5,7 +5,7 @@ services:
     build: ./emulators/mqtt
     container_name: mqtt-honeypot
     ports:
-      - "5002:5003"
+      - "5002:5002"
     depends_on:
       - mongodb
     environment:

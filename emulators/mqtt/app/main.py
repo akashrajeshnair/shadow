@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 import time
-import threading
 from logger import log_attack
 from devices import handle_device_command
 from camera import camera_bp
@@ -12,17 +11,6 @@ MQTT_BROKER_HOST = "0.0.0.0"
 MQTT_BROKER_PORT = 1883  # This is just a placeholder, not an actual MQTT server
 
 attacker_sessions = {}
-
-def log_attack(attacker_ip, attack_type, details):
-    """Log attacker interactions with the fake MQTT service."""
-    timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
-    log_entry = {
-        "timestamp": timestamp,
-        "attacker_ip": attacker_ip,
-        "attack_type": attack_type,
-        "details": details
-    }
-    print(f"[LOG] {log_entry}")  # This will later be written to a real database or file
 
 app.register_blueprint(camera_bp)
 
@@ -36,7 +24,7 @@ def fake_mqtt_connect():
     attacker_sessions[attacker_ip] = time.time()
     
     # Log the attack
-    log_attack(attacker_ip, "MQTT_CONNECT", {"status": "Connected"})
+    log_attack(attacker_ip, "MQTT_CONNECT", "connect", {"status": "Connected"}, {"status": "success", "message": "Connected to fake MQTT broker"})
 
     return jsonify({"status": "success", "message": "Connected to fake MQTT broker"})
 
@@ -52,7 +40,7 @@ def fake_mqtt_message():
     print(f"[ALERT] MQTT Attack Detected: {attacker_ip} -> {topic}: {payload}")
 
     # Log the attack
-    log_attack(attacker_ip, "MQTT_MESSAGE", {"topic": topic, "payload": payload})
+    log_attack(attacker_ip, "MQTT_MESSAGE", "message", {"topic": topic, "payload": payload}, {"status": "success", "message": "Fake MQTT message received"})
 
     return jsonify({"status": "success", "message": "Fake MQTT message received"})
 
@@ -63,7 +51,7 @@ def fake_mqtt_device(device_name):
 
     response = handle_device_command(device_name, data)
 
-    log_attack(attacker_ip, "MQTT_DEVICE_ACCESS", {"device": device_name, "command": data})
+    log_attack(attacker_ip, "MQTT_DEVICE_ACCESS", "device_access", {"device": device_name, "command": data}, response)
 
     return jsonify(response)
 
