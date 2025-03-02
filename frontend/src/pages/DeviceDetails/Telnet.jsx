@@ -3,32 +3,51 @@ import { Table, Card, Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../../assets/devicedetails.css";
 
-const attackLogs = [
-  { ip: "55.66.77.88", device: "Telnet Server", timestamp: "2025-03-01 18:00", command: "Zero-Day Exploit" },
-];
-
 const TelnetServer = () => {
   const navigate = useNavigate();
   const [attackDetails, setAttackDetails] = useState({});
   const [blockedIPs, setBlockedIPs] = useState([]);
+  const [attackLogs, setAttackLogs] = useState([]);
 
   useEffect(() => {
-    const groupedLogs = {};
-    attackLogs
-      .filter(log => log.device === "Telnet Server")
-      .forEach(log => {
-        if (!groupedLogs[log.ip]) {
-          groupedLogs[log.ip] = [];
-        }
-        groupedLogs[log.ip].push({ timestamp: log.timestamp, command: log.command });
-      });
+    const fetchAttackLogs = async () => {
+      try {
+        const response = await fetch('http://localhost:5174/api/attacklogs');
+        const data = await response.json();
+        setAttackLogs(data);
 
-    const sortedLogs = Object.entries(groupedLogs).sort((a, b) => b[1].length - a[1].length);
-    setAttackDetails(Object.fromEntries(sortedLogs));
+        const groupedLogs = {};
+        data
+          .filter(log => log.collectionName === "telnet_logs")
+          .forEach(log => {
+            if (!groupedLogs[log.ip]) {
+              groupedLogs[log.ip] = [];
+            }
+            groupedLogs[log.ip].push({ timestamp: log.timestamp, command: log.command });
+          });
+
+        const sortedLogs = Object.entries(groupedLogs).sort((a, b) => b[1].length - a[1].length);
+        setAttackDetails(Object.fromEntries(sortedLogs));
+      } catch (error) {
+        console.error('Error fetching attack logs:', error);
+      }
+    };
+    fetchAttackLogs();
   }, []);
 
-  const handleBlockIP = (ip) => {
-    setBlockedIPs((prevBlocked) => [...prevBlocked, ip]);
+  const handleBlockIP = async (ip) => {
+    try {
+      await fetch('http://localhost:5174/api/blockedUsers/block', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ip }),
+      });
+      setBlockedIPs((prevBlocked) => [...prevBlocked, ip]);
+    } catch (error) {
+      console.error('Error blocking IP:', error);
+    }
   };
 
   return (

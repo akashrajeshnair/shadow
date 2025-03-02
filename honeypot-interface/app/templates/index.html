@@ -7,8 +7,10 @@
     <h2>Welcome to the Home Automation System</h2>
     <p>Select a module to interact with:</p>
     <ul>
-        <li><a href="{{ url_for('ssh.ssh_page') }}">SSH into your devices</a></li>
-        <li><a href="{{ url_for('ssh.ssh_page') }}">Access smart devices via MQTT</a></li>
-        <li><a href="{{ url_for('ssh.ssh_page') }}">Router Config Panel</a></li>
+        <li><a href="{{ url_for('ssh.ssh_page') }}">SSH</a></li>
+        <li><a href="{{ url_for('mqtt.mqtt_index') }}">MQTT</a></li>
+        <li><a href="{{ url_for('router.index') }}">Router</a></li>
+        <li><a href="{{ url_for('ftp.ftp_index') }}">FTP</a></li>
+        <li><a href="{{ url_for('telnet.telnet_interface') }}">Telnet</a></li>
     </ul>
 {% endblock %}

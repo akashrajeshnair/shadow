@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}SSH Terminal{% endblock %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Telnet Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <main>
+        <div class="section" id="login">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div class="section" id="command">
+            <h2>Execute Command</h2>
+            <form id="command-form">
+                <label for="command">Command:</label>
+                <input type="text" id="command" name="command" required>
+                <button type="submit">Execute</button>
+            </form>
+        </div>
+
+        <div class="section" id="logs">
+            <h2>Logs</h2>
+            <button id="fetch-logs">Fetch Logs</button>
+            <ul id="logs-list"></ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Honeypot Interface</p>
+    </footer>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            fetch('/telnet/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username: username, password: password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            });
+        });
+
+        document.getElementById('command-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const command = document.getElementById('command').value;
+            fetch('/telnet/command', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ command: command })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.response);
+            });
+        });
+
+        document.getElementById('fetch-logs').addEventListener('click', function() {
+            fetch('/telnet/logs')
+            .then(response => response.json())
+            .then(data => {
+                const logsList = document.getElementById('logs-list');
+                logsList.innerHTML = '';
+                data.forEach(log => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${log.timestamp} - ${log.device} - ${log.command} - ${log.response}`;
+                    logsList.appendChild(listItem);
+                });
+            });
+        });
+    </script>
+</body>
+{% endblock %}

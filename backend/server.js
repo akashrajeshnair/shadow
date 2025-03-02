@@ -4,6 +4,8 @@ const cors = require("cors");
 require("dotenv").config();
 
 const authRoutes = require("./routes/Authroutes");
+const attackLogsRouter = require("./routes/attackLogs");
+const blockedUsersRouter = require("./routes/blocking");
 
 const app = express();
 
@@ -13,9 +15,12 @@ app.use(cors({ origin: "http://localhost:5173", credentials: true })); // Allow 
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/blockedUsers", blockedUsersRouter);
+app.use("/api", attackLogsRouter); // Add this line to use the attackLogs route
+
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect("mongodb://localhost:27017/honeypot", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

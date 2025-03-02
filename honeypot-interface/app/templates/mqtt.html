@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}MQTT Terminal{% endblock %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>MQTT Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <main>
+        <div class="section" id="connect">
+            <h2>Connect</h2>
+            <button id="connect-button">Connect to MQTT Broker</button>
+        </div>
+
+        <div class="section" id="message">
+            <h2>Send Message</h2>
+            <form id="message-form">
+                <label for="topic">Topic:</label>
+                <input type="text" id="topic" name="topic" required>
+                <label for="payload">Payload:</label>
+                <input type="text" id="payload" name="payload" required>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+        <div class="section" id="device">
+            <h2>Device Command</h2>
+            <form id="device-form">
+                <label for="device-name">Device Name:</label>
+                <input type="text" id="device-name" name="device-name" required>
+                <label for="command">Command:</label>
+                <input type="text" id="command" name="command" required>
+                <button type="submit">Send Command</button>
+            </form>
+        </div>
+
+        <div class="section" id="camera">
+            <h2>Camera Stream</h2>
+            <video id="camera-stream" controls>
+                <source src="http://localhost:5002/api/mqtt/device/camera/stream" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Honeypot Interface</p>
+    </footer>
+
+    <script>
+        document.getElementById('connect-button').addEventListener('click', function() {
+            fetch('/mqtt/connect', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            });
+        });
+
+        document.getElementById('message-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const topic = document.getElementById('topic').value;
+            const payload = document.getElementById('payload').value;
+            fetch('/mqtt/message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ topic: topic, payload: payload })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            });
+        });
+
+        document.getElementById('device-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const deviceName = document.getElementById('device-name').value;
+            const command = document.getElementById('command').value;
+            fetch(`/mqtt/device/${deviceName}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ command: command })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            });
+        });
+    </script>
+</body>
+{% endblock %}

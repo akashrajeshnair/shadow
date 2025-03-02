@@ -2,5 +2,5 @@ from pymongo import MongoClient
 from config import MONGO_URI, DATABASE_NAME
 
 client = MongoClient(MONGO_URI)
-db = client[DATABASE_NAME]
-logs_collection = db.logs
+db = client["honeypot"]
+logs_collection = db.telnet_logs

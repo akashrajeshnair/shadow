@@ -3,38 +3,48 @@ import { Table, Card, Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../../assets/devicedetails.css"; // Import CSS for styling
 
-const attackLogs = [
-  { ip: "99.12.34.56", device: "File Service", timestamp: "2025-03-01 19:30", command: "Malware Injection" },
-  { ip: "99.12.34.56", device: "File Service", timestamp: "2025-03-01 20:10", command: "Privilege Escalation" },
-  { ip: "88.44.77.99", device: "File Service", timestamp: "2025-03-01 21:00", command: "Brute Force Attack" },
-  { ip: "88.44.77.99", device: "File Service", timestamp: "2025-03-01 21:30", command: "SQL Injection" },
-  { ip: "88.44.77.99", device: "File Service", timestamp: "2025-03-01 22:00", command: "Ransomware Deployment" },
-];
-
 const FileService = () => {
   const navigate = useNavigate();
   const [attackDetails, setAttackDetails] = useState({});
   const [blockedIPs, setBlockedIPs] = useState([]); // Store blocked IPs
 
-  // Group attacks by IP and sort them by the number of attempts (descending)
   useEffect(() => {
-    const groupedLogs = {};
-    attackLogs
-      .filter(log => log.device === "File Service")
-      .forEach(log => {
-        if (!groupedLogs[log.ip]) {
-          groupedLogs[log.ip] = [];
-        }
-        groupedLogs[log.ip].push({ timestamp: log.timestamp, command: log.command });
-      });
+    const fetchLogs = async () => {
+      try {
+        const response = await fetch('http://localhost:5174/api/attacklogs');
+        const data = await response.json();
+        const groupedLogs = {};
+        data
+          .filter(log => log.collectionName === "ftp_logs")
+          .forEach(log => {
+            if (!groupedLogs[log.ip]) {
+              groupedLogs[log.ip] = [];
+            }
+            groupedLogs[log.ip].push({ timestamp: log.timestamp, command: log.command });
+          });
 
-    const sortedLogs = Object.entries(groupedLogs).sort((a, b) => b[1].length - a[1].length);
-    setAttackDetails(Object.fromEntries(sortedLogs));
+        const sortedLogs = Object.entries(groupedLogs).sort((a, b) => b[1].length - a[1].length);
+        setAttackDetails(Object.fromEntries(sortedLogs));
+      } catch (error) {
+        console.error('Error fetching logs:', error);
+      }
+    };
+    fetchLogs();
   }, []);
 
-  // Function to block an IP
-  const handleBlockIP = (ip) => {
-    setBlockedIPs((prevBlocked) => [...prevBlocked, ip]); // Add to blocked list
+  const handleBlockIP = async (ip) => {
+    try {
+      await fetch('http://localhost:5174/api/blockedUsers/block', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ip }),
+      });
+      setBlockedIPs((prevBlocked) => [...prevBlocked, ip]); // Add to blocked list
+    } catch (error) {
+      console.error('Error blocking IP:', error);
+    }
   };
 
   return (

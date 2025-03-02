@@ -13,7 +13,7 @@ def execute_command():
         return jsonify({"error": "No command provided"}), 400
 
     response = fake_shell.execute(command)
-    log_command(request.remote_addr, command)  # Logging via API
+    log_command(request.remote_addr, command, response)  # Logging via API
     return jsonify({"command": command, "response": response})
 
 def start_api():

@@ -9,13 +9,15 @@
 </head>
 <body>
     <header>
-        <h1>IoT Honeypot</h1>
+        <h1>IoT Admin</h1>
         <nav>
             <ul>
                 <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('ssh.ssh_page') }}">Login to your devices via SSH</a></li>
-                <li><a href="{{ url_for('ssh.ssh_page') }}">Control your smart devices via MQTT</a></li>
-                <li><a href="{{ url_for('ssh.ssh_page') }}">Router Configuration Panel</a></li>
+                <li><a href="{{ url_for('ssh.ssh_page') }}">SSH</a></li>
+                <li><a href="{{ url_for('mqtt.mqtt_index') }}">MQTT</a></li>
+                <li><a href="{{ url_for('router.index') }}">Router</a></li>
+                <li><a href="{{ url_for('telnet.telnet_interface') }}">Telnet</a></li>
+                <li><a href="{{ url_for('ftp.ftp_index') }}">FTP</a></li>
             </ul>
         </nav>
     </header>

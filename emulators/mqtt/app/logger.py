@@ -18,13 +18,13 @@ def get_mongo_client(uri, retries=5, delay=2):
 # Connect to MongoDB
 client = get_mongo_client("mongodb://mongodb:27017/")
 db = client["honeypot"]
-logs_collection = db["attack_logs"]
+logs_collection = db["mqtt_logs"]
 
 def log_attack(ip, device, command, data, response):
     """Log attacker actions in MongoDB with a structured schema."""
     log_entry = {
         "timestamp": datetime.datetime.utcnow(),
-        "attacker_ip": ip,
+        "ip": ip,
         "device": device,
         "command": command,     
         "data": data,

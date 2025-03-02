@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}FTP Terminal{% endblock %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>FTP Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <main>
+        <div class="section" id="command">
+            <h2>Execute Command</h2>
+            <form id="command-form">
+                <label for="device">Device:</label>
+                <input type="text" id="device" name="device" required>
+                <label for="command">Command:</label>
+                <input type="text" id="command" name="command" required>
+                <button type="submit">Execute</button>
+            </form>
+        </div>
+
+        <div class="section" id="upload">
+            <h2>Upload File</h2>
+            <form id="upload-form">
+                <label for="device-upload">Device:</label>
+                <input type="text" id="device-upload" name="device-upload" required>
+                <label for="filename">Filename:</label>
+                <input type="text" id="filename" name="filename" required>
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+
+        <div class="section" id="list">
+            <h2>List Files</h2>
+            <button id="fetch-files">Fetch Files</button>
+            <ul id="files-list"></ul>
+        </div>
+
+        <div class="section" id="download">
+            <h2>Download File</h2>
+            <form id="download-form">
+                <label for="device-download">Device:</label>
+                <input type="text" id="device-download" name="device-download" required>
+                <label for="filename-download">Filename:</label>
+                <input type="text" id="filename-download" name="filename-download" required>
+                <button type="submit">Download</button>
+            </form>
+        </div>
+
+        <div class="section" id="delete">
+            <h2>Delete File</h2>
+            <form id="delete-form">
+                <label for="device-delete">Device:</label>
+                <input type="text" id="device-delete" name="device-delete" required>
+                <label for="filename-delete">Filename:</label>
+                <input type="text" id="filename-delete" name="filename-delete" required>
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Honeypot Interface</p>
+    </footer>
+
+    <script>
+        document.getElementById('command-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const device = document.getElementById('device').value;
+            const command = document.getElementById('command').value;
+            fetch('/ftp/command', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ device: device, command: command })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.response);
+            });
+        });
+
+        document.getElementById('upload-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const device = document.getElementById('device-upload').value;
+            const filename = document.getElementById('filename').value;
+            fetch('/ftp/upload', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ device: device, filename: filename })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            });
+        });
+
+        document.getElementById('fetch-files').addEventListener('click', function() {
+            fetch('/ftp/list')
+            .then(response => response.json())
+            .then(data => {
+                const filesList = document.getElementById('files-list');
+                filesList.innerHTML = '';
+                data.files.forEach(file => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = file;
+                    filesList.appendChild(listItem);
+                });
+            });
+        });
+
+        document.getElementById('download-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const device = document.getElementById('device-download').value;
+            const filename = document.getElementById('filename-download').value;
+            fetch('/ftp/download', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ device: device, filename: filename })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            });
+        });
+
+        document.getElementById('delete-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const device = document.getElementById('device-delete').value;
+            const filename = document.getElementById('filename-delete').value;
+            fetch('/ftp/delete', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ device: device, filename: filename })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            });
+        });
+    </script>
+</body>
+{% endblock %}

@@ -3,6 +3,7 @@ import time
 from logger import log_attack
 from devices import handle_device_command
 from camera import camera_bp
+from mirai_detection import is_mirai_command
 
 app = Flask(__name__)
 
@@ -39,21 +40,26 @@ def fake_mqtt_message():
 
     print(f"[ALERT] MQTT Attack Detected: {attacker_ip} -> {topic}: {payload}")
 
-    # Log the attack
-    log_attack(attacker_ip, "MQTT_MESSAGE", "message", {"topic": topic, "payload": payload}, {"status": "success", "message": "Fake MQTT message received"})
+    # Check for Mirai botnet commands
+    if is_mirai_command(payload):
+        log_attack(attacker_ip, "MIRAI_DETECTED", topic, {"payload": payload}, {"status": "detected", "message": "Mirai botnet activity detected"})
 
-    return jsonify({"status": "success", "message": "MQTT message received"})
+    return jsonify({"status": "success", "message": "Message received"})
+
 
 @app.route("/api/mqtt/device/<device_name>", methods=["POST"])
 def fake_mqtt_device(device_name):
     data = request.json
+    command = data.get("command", "")
     attacker_ip = request.remote_addr
 
-    response = handle_device_command(device_name, data)
+    # Check for Mirai botnet commands
+    if is_mirai_command(command):
+        log_attack(attacker_ip, "MIRAI_DETECTED", device_name, {"command": command}, {"status": "detected", "message": "Mirai botnet activity detected"})
 
-    log_attack(attacker_ip, "MQTT_DEVICE_ACCESS", "device_access", {"device": device_name, "command": data}, response)
-
+    response = handle_device_command(device_name, command)
     return jsonify(response)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5002)

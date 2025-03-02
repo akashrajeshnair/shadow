@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}SSH Terminal{% endblock %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Honeypot Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <main>
+        <div class="section" id="devices">
+            <h2>Devices</h2>
+            <ul>
+                {% for device in devices %}
+                <li>{{ device.name }} ({{ device.status }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="section" id="firewall">
+            <h2>Firewall Rules</h2>
+            <ul>
+                {% for rule in firewall_rules %}
+                <li>{{ rule.rule }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="section" id="network">
+            <h2>Network Configuration</h2>
+            <ul>
+                <li>Hostname: {{ network_config.hostname }}</li>
+                <li>IP: {{ network_config.ip }}</li>
+                <li>Subnet Mask: {{ network_config.subnet_mask }}</li>
+                <li>Gateway: {{ network_config.gateway }}</li>
+                <li>DNS: {{ network_config.dns | join(', ') }}</li>
+            </ul>
+        </div>
+
+        <div class="section" id="security">
+            <h2>Security</h2>
+            <form id="security-form">
+                <label for="firewall-rule">Add Firewall Rule:</label>
+                <input type="text" id="firewall-rule" name="firewall-rule">
+                <button type="submit">Add Rule</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Honeypot Interface</p>
+    </footer>
+
+    <script>
+        document.getElementById('security-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const rule = document.getElementById('firewall-rule').value;
+            fetch('/security', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ rule: rule })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            });
+        });
+    </script>
+</body>
+{% endblock %}

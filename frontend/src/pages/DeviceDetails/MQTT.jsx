@@ -3,33 +3,48 @@ import { Table, Card, Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../../assets/devicedetails.css";
 
-const attackLogs = [
-  { ip: "182.75.45.67", device: "MQTT IoT Devices", timestamp: "2025-03-01 16:50", command: "XSS Attack" },
-  { ip: "182.75.45.67", device: "MQTT IoT Devices", timestamp: "2025-03-01 17:10", command: "RCE Attack" },
-];
-
 const MQTTDevices = () => {
   const navigate = useNavigate();
   const [attackDetails, setAttackDetails] = useState({});
   const [blockedIPs, setBlockedIPs] = useState([]);
 
   useEffect(() => {
-    const groupedLogs = {};
-    attackLogs
-      .filter(log => log.device === "MQTT IoT Devices")
-      .forEach(log => {
-        if (!groupedLogs[log.ip]) {
-          groupedLogs[log.ip] = [];
-        }
-        groupedLogs[log.ip].push({ timestamp: log.timestamp, command: log.command });
-      });
+    const fetchLogs = async () => {
+      try {
+        const response = await fetch('http://localhost:5174/api/attacklogs');
+        const data = await response.json();
+        const groupedLogs = {};
+        data
+          .filter(log => log.collectionName === "mqtt_logs")
+          .forEach(log => {
+            if (!groupedLogs[log.ip]) {
+              groupedLogs[log.ip] = [];
+            }
+            groupedLogs[log.ip].push({ timestamp: log.timestamp, command: log.command });
+          });
 
-    const sortedLogs = Object.entries(groupedLogs).sort((a, b) => b[1].length - a[1].length);
-    setAttackDetails(Object.fromEntries(sortedLogs));
+        const sortedLogs = Object.entries(groupedLogs).sort((a, b) => b[1].length - a[1].length);
+        setAttackDetails(Object.fromEntries(sortedLogs));
+      } catch (error) {
+        console.error('Error fetching logs:', error);
+      }
+    };
+    fetchLogs();
   }, []);
 
-  const handleBlockIP = (ip) => {
-    setBlockedIPs((prevBlocked) => [...prevBlocked, ip]);
+  const handleBlockIP = async (ip) => {
+    try {
+      await fetch('http://localhost:5174/api/blockedUsers/block', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ip }),
+      });
+      setBlockedIPs((prevBlocked) => [...prevBlocked, ip]);
+    } catch (error) {
+      console.error('Error blocking IP:', error);
+    }
   };
 
   return (

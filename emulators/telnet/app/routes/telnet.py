@@ -7,12 +7,18 @@ telnet_bp = Blueprint("telnet", __name__)
 
 # Fake commands and their responses
 COMMAND_RESPONSES = {
-    "help": "Available commands: whoami, uname, ifconfig, exit",
-    "whoami": "root",
-    "uname": "Linux fake-router 4.19.0-16-amd64 #1 SMP Debian",
-    "ifconfig": "eth0: inet 192.168.1.1 netmask 255.255.255.0",
+    "help": "Available commands: open, close, send, quit",
+    "status": "Connection status: open",
+    "open": "Opening connection to host...",
+    "close": "Closing connection...",
+    "send": "Sending data...",
+    "quit": "Exiting telnet session...",
 }
 
+LOG_RESPONSES = {
+    1: {"timestamp": "2025-03-02T12:00:00Z", "device": "Telnet-192.168.1.2", "command": "LOGIN", "response": "Login Successful"},
+    2: {"timestamp": "2025-03-02T12:05:00Z", "device": "Telnet-192.168.1.3", "command": "help", "response": "Available commands: open, close, send, quit"},
+}
 
 @telnet_bp.route("/api/telnet/login", methods=["POST"])
 def login():
@@ -60,5 +66,20 @@ def execute_command():
 @telnet_bp.route("/api/telnet/logs", methods=["GET"])
 def get_logs():
     """ Retrieve logged commands """
+    # Add a new fake log entry each time this endpoint is queried
+    new_log_id = len(LOG_RESPONSES) + 1
+    new_log = {
+        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        "device": f"Telnet-{new_log_id}",
+        "command": "QUERY_LOGS",
+        "response": "Logs retrieved successfully"
+    }
+    LOG_RESPONSES[new_log_id] = new_log
+    
+    # Retrieve logs from the database
     logs = list(logs_collection.find({}, {"_id": 0}))  # Exclude MongoDB _id field
-    return jsonify(logs)
+    
+    # Combine database logs with fake logs
+    combined_logs = logs + list(LOG_RESPONSES.values())
+    
+    return jsonify(combined_logs)

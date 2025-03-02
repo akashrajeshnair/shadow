@@ -1,56 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Modal, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import DeviceCard from "../components/DeviceCard";
 import "../assets/dashboard.css";
 
-// Sample attack logs (Replace with real API data)
-const attackLogs = [
-  { ip: "192.168.1.10", device: "Router", timestamp: "2025-03-01 12:30", command: "Port Scan" },
-  { ip: "203.0.113.45", device: "Router", timestamp: "2025-03-01 14:30", command: "SQL Injection" },
-  { ip: "203.0.113.45", device: "Router", timestamp: "2025-03-01 15:00", command: "Brute Force" },
-  { ip: "182.75.45.67", device: "MQTT Iot Devices", timestamp: "2025-03-01 16:50", command: "XSS Attack" },
-  { ip: "182.75.45.67", device: "MQTT Iot Devices", timestamp: "2025-03-01 17:10", command: "RCE Attack" },
-  { ip: "55.66.77.88", device: "Telnet Server", timestamp: "2025-03-01 18:00", command: "Zero-Day Exploit" },
-  { ip: "192.168.1.23", device: "SSH Device", timestamp: "2025-03-01 18:30", command: "Packet Sniffing" },
-  { ip: "99.12.34.56", device: "File Service", timestamp: "2025-03-01 19:30", command: "Malware Injection" },
-  { ip: "99.12.34.56", device: "File Service", timestamp: "2025-03-01 20:10", command: "Privilege Escalation" },
-];
-
-// Device list with correct routes
-const devices = [
-  { name: "File Service", route: "/DeviceDetails/FileService" },
-  { name: "MQTT", route: "/DeviceDetails/MQTT" },
-  { name: "Telnet", route: "/DeviceDetails/Telnet" },
-  { name: "Router", route: "/DeviceDetails/Router" },
-  { name: "SSH", route: "/DeviceDetails/SSH" },
-];
-
-// Function to group and sort attacks by IP
-const groupAndSortAttacks = (deviceName) => {
-  const filteredLogs = attackLogs.filter((log) => log.device === deviceName);
-  const groupedLogs = {};
-
-  filteredLogs.forEach((log) => {
-    if (!groupedLogs[log.ip]) {
-      groupedLogs[log.ip] = [];
-    }
-    groupedLogs[log.ip].push({
-      timestamp: log.timestamp,
-      command: log.command,
-    });
-  });
-
-  return Object.entries(groupedLogs)
-    .sort((a, b) => b[1].length - a[1].length)
-    .reduce((acc, [ip, logs]) => ({ ...acc, [ip]: logs }), {});
-};
-
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [attackLogs, setAttackLogs] = useState([]);
   const [selectedDevice, setSelectedDevice] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [attackDetails, setAttackDetails] = useState({});
+
+  useEffect(() => {
+    const fetchLogs = async () => {
+      try {
+        const response = await fetch('http://localhost:5174/api/attacklogs');
+        const data = await response.json();
+        setAttackLogs(data);
+      } catch (error) {
+        console.error('Error fetching logs:', error);
+      }
+    };
+    fetchLogs();
+  }, []);
+
+  const devices = [
+    { name: "File Service", route: "/DeviceDetails/FileService" },
+    { name: "MQTT", route: "/DeviceDetails/MQTT" },
+    { name: "Telnet", route: "/DeviceDetails/Telnet" },
+    { name: "Router", route: "/DeviceDetails/Router" },
+    { name: "SSH", route: "/DeviceDetails/SSH" },
+  ];
+
+  const groupAndSortAttacks = (deviceName) => {
+    const filteredLogs = attackLogs.filter((log) => log.device === deviceName);
+    const groupedLogs = {};
+
+    filteredLogs.forEach((log) => {
+      if (!groupedLogs[log.ip]) {
+        groupedLogs[log.ip] = [];
+      }
+      groupedLogs[log.ip].push({
+        timestamp: log.timestamp,
+        command: log.command,
+      });
+    });
+
+    return Object.entries(groupedLogs)
+      .sort((a, b) => b[1].length - a[1].length)
+      .reduce((acc, [ip, logs]) => ({ ...acc, [ip]: logs }), {});
+  };
 
   const handleDeviceClick = (deviceName) => {
     const device = devices.find((d) => d.name === deviceName);
