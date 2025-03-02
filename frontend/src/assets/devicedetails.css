@@ -1,0 +1,56 @@
+.device-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .device-header {
+    background: #f8f9fa;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .device-header h2 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .back-button {
+    background: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  .back-button:hover {
+    background: #0056b3;
+  }
+  
+  .attack-table {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .ip-header {
+    background: #f1f1f1;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .no-attacks {
+    text-align: center;
+    font-size: 18px;
+    color: red;
+    margin-top: 20px;
+  }
+  .blocked {
+    background-color: #f8d7da !important; /* Light red background */
+    color: #721c24 !important; /* Dark red text */
+  }
+  .blocked td {
+    text-decoration: line-through; /* Strike-through effect */
+  }

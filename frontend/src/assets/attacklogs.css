@@ -1,0 +1,139 @@
+body, html {
+    height: 100%;
+  }
+  
+  .charts-container {
+    min-height: 100vh; /* Ensures the container covers full viewport height */
+    padding-bottom: 50px; /* Adds spacing at the bottom */
+  }
+  
+  .log-container {
+    min-height: 60vh; /* Ensures logs take a good amount of space */
+  }
+  
+
+/* General Page Styling */
+.log-container {
+    background: #1e1e2f;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Table Styling */
+table {
+    background: #2c2c3e;
+    color: #ddd;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #444;
+    text-align: left;
+}
+
+th {
+    background: #333344;
+    color: #fff;
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Flag Image */
+td img {
+    border-radius: 4px;
+    border: 1px solid white;
+}
+
+/* Search and Filter Container */
+.d-flex {
+    gap: 10px;
+}
+
+input[type="text"] {
+    background: white;  /* White background */
+    color: black;       /* Black text */
+    border-radius: 5px;
+    border: 1px solid #666;
+    padding: 5px 10px;
+}
+
+input[type="text"]::placeholder {
+    color: black; /* Placeholder text in black */
+}
+
+/* Dropdown Styling */
+.dropdown-toggle {
+    background: #444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.dropdown-menu {
+    background: #2c2c3e;
+    border: 1px solid #666;
+}
+
+.dropdown-item {
+    color: #fff;
+}
+
+.dropdown-item:hover {
+    background: #ff6b6b;
+    color: #fff;
+}
+
+/* Pagination Styling */
+.pagination {
+    margin-top: 20px;
+}
+
+.page-item .page-link {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.page-item.active .page-link {
+    background: #ff6b6b;
+    color: white;
+}
+
+.page-link:hover {
+    background: #ff4d4d;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .log-container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+    }
+
+    .dropdown-toggle {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+}

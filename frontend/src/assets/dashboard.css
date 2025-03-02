@@ -1,0 +1,61 @@
+/* General dashboard container styling */
+.dashboard-container {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  /* Heading styles */
+  h2 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Device Cards */
+  .card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Progress bar styling */
+  .progress {
+    height: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Modal styling */
+  .modal-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+  }
+  
+  .table th {
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+  
+  /* Table row styling */
+  .table-active {
+    background-color: #f1f1f1 !important;
+    font-weight: bold;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .dashboard-container {
+      padding: 10px;
+    }
+    .card {
+      margin-bottom: 15px;
+    }
+  }
+  
